@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.skye.todo.Model.ToDoModel;
 import com.skye.todo.OnDialogCloseListener;
@@ -21,7 +22,7 @@ import com.skye.todo.R;
 
 public class AddNewTask extends BottomSheetDialogFragment {
     private TextInputEditText textInputEditText;
-    private Button button;
+    private MaterialButton saveButton, cancelButton;
     public static final String TAG = "AddNewTask";
     private DataBaseHelper myDB;
 
@@ -41,7 +42,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
         super.onViewCreated( view , savedInstanceState );
 
         textInputEditText = view.findViewById( R.id.edit_text );
-        button = view.findViewById( R.id.save_button );
+        saveButton = view.findViewById( R.id.save_button );
+        cancelButton = view.findViewById( R.id.cancel_button );
 
         myDB = new DataBaseHelper( getActivity() );
 
@@ -55,7 +57,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
             if(task.length() > 0)
             {
-                button.setEnabled( false );
+                saveButton.setEnabled( false );
             }
 
         }
@@ -69,13 +71,13 @@ public class AddNewTask extends BottomSheetDialogFragment {
             public void onTextChanged(CharSequence s , int start , int before , int count) {
                if(s.toString().equals( "" ))
                {
-                   button.setEnabled( false );
-                   button.setBackgroundColor( getResources().getColor( R.color.light_grey ) );
+                   saveButton.setEnabled( false );
+                   saveButton.setBackgroundColor( getResources().getColor( R.color.light_grey ) );
                }
                else
                {
-                   button.setEnabled( true );
-                   button.setBackgroundColor( getResources().getColor( R.color.blue ) );
+                   saveButton.setEnabled( true );
+                   saveButton.setBackgroundColor( getResources().getColor( R.color.blue ) );
                }
             }
 
@@ -86,7 +88,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         } );
 
         final boolean finalIsUpdate = isUpdate;
-        button.setOnClickListener( new View.OnClickListener() {
+        saveButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String text = textInputEditText.getText().toString();
@@ -103,6 +105,12 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     myDB.insertTask( item );
                 }
 
+                dismiss();
+            }
+        } );
+        cancelButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 dismiss();
             }
         } );
