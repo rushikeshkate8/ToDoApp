@@ -43,8 +43,12 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder , int position) {
         final ToDoModel item = toDoModelList.get( position );
-        holder.checkBox.setText( item.getTask() );
         holder.checkBox.setChecked( toBoolean( item.getStatus() ) );
+        holder.checkBox.setText( item.getTask() );
+        if(holder.checkBox.isChecked())
+        {
+            holder.checkBox.setPaintFlags( holder.checkBox.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG );
+        }
         holder.checkBox.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView , boolean isChecked) {

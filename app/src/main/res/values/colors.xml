@@ -7,5 +7,8 @@
     <color name="grey">#757575</color>
     <color name="light_grey">#BDBDBD</color>
     <color name="black">#212121</color>
+    <color name="full_black">#000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#FFC107</color>
+    <color name="dark_blue_gray">#263238</color>
 </resources>
