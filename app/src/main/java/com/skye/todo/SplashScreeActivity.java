@@ -31,7 +31,7 @@ public class SplashScreeActivity extends AppCompatActivity {
 
                 .withBackgroundColor( splashScreenBackgroundColor )
 
-                .withLogo( R.drawable.ic_baseline_done_24);
+                .withLogo( R.drawable.ic_baseline_task_alt);
 
         View easySplashScreen = config.create();
         setContentView(easySplashScreen );

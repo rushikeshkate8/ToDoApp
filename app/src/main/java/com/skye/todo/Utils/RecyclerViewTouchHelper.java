@@ -6,8 +6,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.ColorUtils;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import com.skye.todo.Adapter.ToDoAdapter;
@@ -62,9 +64,9 @@ public class RecyclerViewTouchHelper extends ItemTouchHelper.SimpleCallback {
     @Override
     public void onChildDraw(@NonNull Canvas c , @NonNull RecyclerView recyclerView , @NonNull RecyclerView.ViewHolder viewHolder , float dX , float dY , int actionState , boolean isCurrentlyActive) {
         new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                .addSwipeLeftBackgroundColor( ContextCompat.getColor( adapter.getContext(), R.color.blue ) )
+                .addSwipeLeftBackgroundColor( ContextCompat.getColor( adapter.getContext(), R.color.light_blue ) )
                 .addSwipeLeftActionIcon( R.drawable.ic_baseline_edit )
-                .addSwipeRightBackgroundColor( Color.RED )
+                .addSwipeRightBackgroundColor( ContextCompat.getColor( adapter.getContext(), R.color.light_red ) )
                 .addSwipeRightActionIcon( R.drawable.ic_baseline_delete )
                 .create()
                 .decorate();

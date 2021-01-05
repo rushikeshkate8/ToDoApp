@@ -36,7 +36,7 @@
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/blue"
             android:id="@+id/save_button"
             android:text="Save"/>
     </LinearLayout>

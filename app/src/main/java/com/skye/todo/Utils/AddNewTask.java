@@ -16,12 +16,14 @@ import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.skye.todo.Model.ToDoModel;
 import com.skye.todo.OnDialogCloseListener;
 import com.skye.todo.R;
 
 public class AddNewTask extends BottomSheetDialogFragment {
     private TextInputEditText textInputEditText;
+    private TextInputLayout textInputLayout;
     private MaterialButton saveButton, cancelButton;
     public static final String TAG = "AddNewTask";
     private DataBaseHelper myDB;
@@ -42,10 +44,13 @@ public class AddNewTask extends BottomSheetDialogFragment {
         super.onViewCreated( view , savedInstanceState );
 
         textInputEditText = view.findViewById( R.id.edit_text );
+        textInputLayout = view.findViewById( R.id.edit_text_layout );
         saveButton = view.findViewById( R.id.save_button );
         cancelButton = view.findViewById( R.id.cancel_button );
-
         myDB = new DataBaseHelper( getActivity() );
+        saveButton.setBackgroundColor( getResources().getColor( R.color.light_blue ) );
+        saveButton.setTextColor( getResources().getColor( R.color.blue ) );
+        textInputLayout.setBoxStrokeColor( getResources().getColor( R.color.light_blue ) );
 
         boolean isUpdate = false;
         Bundle bundle = getArguments();
@@ -55,12 +60,17 @@ public class AddNewTask extends BottomSheetDialogFragment {
             String task = bundle.getString( "task" );
             textInputEditText.setText( task );
 
+            /*
             if(task.length() > 0)
             {
                 saveButton.setEnabled( false );
+                saveButton.setTextColor( getResources().getColor( R.color.grey ) );
             }
 
+             */
+
         }
+        /*
         textInputEditText.addTextChangedListener( new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s , int start , int count , int after) {
@@ -71,13 +81,17 @@ public class AddNewTask extends BottomSheetDialogFragment {
             public void onTextChanged(CharSequence s , int start , int before , int count) {
                if(s.toString().equals( "" ))
                {
+
                    saveButton.setEnabled( false );
-                   saveButton.setBackgroundColor( getResources().getColor( R.color.light_grey ) );
+                   saveButton.setBackgroundColor( getResources().getColor( R.color.grey_800 ) );
+                   saveButton.setTextColor( getResources().getColor( R.color.grey ) );
+
                }
                else
                {
                    saveButton.setEnabled( true );
-                   saveButton.setBackgroundColor( getResources().getColor( R.color.blue ) );
+                   saveButton.setBackgroundColor( getResources().getColor( R.color.light_blue ) );
+                   saveButton.setTextColor( getResources().getColor( R.color.blue ) );
                }
             }
 
@@ -86,6 +100,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
             }
         } );
+        */
 
         final boolean finalIsUpdate = isUpdate;
         saveButton.setOnClickListener( new View.OnClickListener() {

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="red">#F44336</color>
+    <color name="light_red">#FFCDD2</color>
     <color name="dark_blue">#1976D2</color>
     <color name="blue">#2196F3</color>
     <color name="light_blue">#BBDEFB</color>
@@ -8,7 +10,13 @@
     <color name="light_grey">#BDBDBD</color>
     <color name="black">#212121</color>
     <color name="full_black">#000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="yellow">#FFC107</color>
     <color name="dark_blue_gray">#263238</color>
+    <color name="grey_800">#424242</color>
+    <color name="grey_850">#303030</color>
+    <color name="grey_900">#212121</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_50">#FAFAFA</color>
 </resources>
