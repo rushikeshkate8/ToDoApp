@@ -14,19 +14,47 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import com.skye.todo.Adapter.ToDoAdapter;
 import com.skye.todo.MainActivity;
+import com.skye.todo.Model.ToDoModel;
 import com.skye.todo.R;
+
+import java.util.Collection;
+import java.util.Collections;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class RecyclerViewTouchHelper extends ItemTouchHelper.SimpleCallback {
    private ToDoAdapter adapter;
     public RecyclerViewTouchHelper(ToDoAdapter adapter) {
-        super( 0 , ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT );
+        super( ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT );
         this.adapter = adapter;
     }
 
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView , @NonNull RecyclerView.ViewHolder viewHolder , @NonNull RecyclerView.ViewHolder target) {
+
+            int fromPosition = viewHolder.getAdapterPosition();
+            int toPosition = target.getAdapterPosition();
+          /*
+            ToDoModel toTaskItem = adapter.toDoModelList.get( toPosition );
+            int toID = toTaskItem.getId();
+            String toTask = toTaskItem.getTask();
+            int toStatus = toTaskItem.getStatus();
+
+            ToDoModel fromTaskItem = adapter.toDoModelList.get( fromPosition );
+            int fromID = fromTaskItem.getId();
+            String fromTask = fromTaskItem.getTask();
+            int fromStatus = fromTaskItem.getStatus();
+
+            adapter.myDB.updateTask( toID, fromTask );
+            adapter.myDB.updateStatus( toID, fromStatus );
+
+            adapter.myDB.updateTask( fromID, toTask );
+            adapter.myDB.updateStatus( fromID, toStatus );
+     */
+
+            Collections.swap( adapter.toDoModelList, fromPosition, toPosition );
+            adapter.notifyItemMoved( fromPosition, toPosition );
         return false;
     }
 

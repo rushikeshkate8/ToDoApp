@@ -54,6 +54,16 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        dataBaseHelper.db.delete( DataBaseHelper.TABLE_NAME, null, null );
+        for(ToDoModel task : adapter.toDoModelList)
+        {
+            dataBaseHelper.insertTask( task );
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
 

@@ -21,9 +21,9 @@ import com.skye.todo.Utils.DataBaseHelper;
 import java.util.List;
 
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> {
-    private List<ToDoModel> toDoModelList;
+    public List<ToDoModel> toDoModelList;
     private MainActivity mainActivity;
-    private DataBaseHelper myDB;
+    public DataBaseHelper myDB;
     public ToDoAdapter(DataBaseHelper myDB, MainActivity mainActivity)
     {
         this.myDB = myDB;

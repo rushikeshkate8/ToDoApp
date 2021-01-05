@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
-    private SQLiteDatabase db;
+    public SQLiteDatabase db;
 
     private static final String DATABASE_NAME = "TODO_DATABASE";
-    private static final String TABLE_NAME = "TODO_TABLE";
+    public static final String TABLE_NAME = "TODO_TABLE";
     private static final String COL_1 = "ID";
     private static final String COL_2 = "TASK";
     private static final String COL_3 = "STATUS";
