@@ -40,7 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put( COL_2, model.getTask() );
-        values.put( COL_3, 0 );
+        values.put( COL_3, model.getStatus() );
         db.insert( TABLE_NAME,null, values );
     }
     public void updateTask(int id, String task)

@@ -2,6 +2,7 @@ package com.skye.todo;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Html;
@@ -11,6 +12,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +25,6 @@ import com.skye.todo.Utils.DataBaseHelper;
 import com.skye.todo.Utils.RecyclerViewTouchHelper;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnDialogCloseListener {
@@ -33,10 +34,19 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
    private List<ToDoModel> toDoModelList;
    private ToDoAdapter adapter;
    boolean darkMode = false;
+   //boolean isDarkModeOn;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate( R.menu.action_bar_menu, menu );
+        /*
+        MenuItem darkModeItem = menu.findItem(R.id.darkmode_menu_item);
+        if(isDarkModeOn)
+        {
+            darkModeItem.setTitle( "Dark Mode: ON" );
+        }
+        else
+            darkModeItem.setTitle( "Dark Mode: OFF" );*/
         return true;
     }
 
@@ -49,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
             case R.id.aboutus_menu_item:
                 startActivity(new Intent(this, AboutUsActivity.class) );
                 return true;
+                /*
+            case R.id.darkmode_menu_item:
+                //setUpDarkMode();
+                return true; */
         }
         return super.onOptionsItemSelected( item );
     }
@@ -56,16 +70,19 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
     @Override
     protected void onPause() {
         super.onPause();
-        dataBaseHelper.db.delete( DataBaseHelper.TABLE_NAME, null, null );
-        for(ToDoModel task : adapter.toDoModelList)
-        {
-            dataBaseHelper.insertTask( task );
+
+        if(ToDoAdapter.dragged) {
+            dataBaseHelper.db.delete( DataBaseHelper.TABLE_NAME , null , null );
+            for (ToDoModel task : adapter.toDoModelList) {
+                dataBaseHelper.insertTask( task );
+            }
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
+
 
         int nightFlags = this.getResources().getConfiguration().uiMode &
                 Configuration.UI_MODE_NIGHT_MASK;
@@ -94,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
             }
         } );
 
+
         toDoModelList = new ArrayList<>();
         adapter = new ToDoAdapter( dataBaseHelper, MainActivity.this );
 
@@ -108,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         itemTouchHelper.attachToRecyclerView( recyclerView );
     }
 
+
     @Override
     public void onDialogClose(DialogInterface dialogInterface) {
         toDoModelList = dataBaseHelper.getAllTasks();
@@ -115,4 +134,85 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         adapter.setTasks( toDoModelList );
         adapter.notifyDataSetChanged();
     }
+
+
+    /*
+    private void darkMode()
+    {
+        SharedPreferences sharedPreferences
+                = getSharedPreferences(
+                "sharedPrefs", MODE_PRIVATE);
+        final SharedPreferences.Editor editor
+                = sharedPreferences.edit();
+
+        isDarkModeOn
+                = sharedPreferences
+                .getBoolean(
+                        "isDarkModeOn", false);
+
+        // When user reopens the app
+        // after applying dark/light mode
+        int nightFlags = this.getResources().getConfiguration().uiMode &
+                Configuration.UI_MODE_NIGHT_MASK;
+        if(nightFlags == Configuration.UI_MODE_NIGHT_YES)
+            darkMode = true;
+        else
+            darkMode = false;
+
+        if(darkMode == isDarkModeOn)
+            return;
+
+        //if (isDarkModeOn) {
+            AppCompatDelegate
+                    .setDefaultNightMode(
+                            AppCompatDelegate
+                                    .MODE_NIGHT_YES);
+        }
+        else {
+            AppCompatDelegate
+                    .setDefaultNightMode(
+                            AppCompatDelegate
+                                    .MODE_NIGHT_NO);
+        }
+
+    } */
+    /*
+    private void setUpDarkMode()
+    {
+        SharedPreferences sharedPreferences
+                = getSharedPreferences(
+                "sharedPrefs", MODE_PRIVATE);
+        final SharedPreferences.Editor editor
+                = sharedPreferences.edit();
+
+        if (isDarkModeOn) {
+
+            // if dark mode is on it
+            // will turn it off
+            AppCompatDelegate
+                    .setDefaultNightMode(
+                            AppCompatDelegate
+                                    .MODE_NIGHT_NO);
+            // it will set isDarkModeOn
+            // boolean to false
+            editor.putBoolean(
+                    "isDarkModeOn", false);
+        }
+        else {
+
+            // if dark mode is off
+            // it will turn it on
+            AppCompatDelegate
+                    .setDefaultNightMode(
+                            AppCompatDelegate
+                                    .MODE_NIGHT_YES);
+
+            // it will set isDarkModeOn
+            // boolean to true
+            editor.putBoolean(
+                    "isDarkModeOn", true);
+        }
+        editor.apply();
+    } */
+
 }

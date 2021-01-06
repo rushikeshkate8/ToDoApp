@@ -6,6 +6,12 @@
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_more_vert_24">
         <menu>
+            <!--
+            <item android:id="@+id/darkmode_menu_item"
+                  android:title="Dark Mode: OFF"
+                  android:icon="@drawable/ic_baseline_dark_mode_24"
+                  android:orderInCategory="1"/> -->
+
             <item
                 android:id="@+id/aboutus_menu_item"
                 android:icon="@drawable/ic_baseline_error_outline_24"

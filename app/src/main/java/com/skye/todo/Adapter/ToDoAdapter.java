@@ -21,9 +21,10 @@ import com.skye.todo.Utils.DataBaseHelper;
 import java.util.List;
 
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> {
-    public List<ToDoModel> toDoModelList;
+    public static List<ToDoModel> toDoModelList;
     private MainActivity mainActivity;
-    public DataBaseHelper myDB;
+    public static DataBaseHelper myDB;
+    public static boolean dragged = false;
     public ToDoAdapter(DataBaseHelper myDB, MainActivity mainActivity)
     {
         this.myDB = myDB;
@@ -56,12 +57,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
                 {
                     holder.checkBox.setPaintFlags( holder.checkBox.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG );
                     myDB.updateStatus( item.getId(), 1 );
+                    item.setStatus( 1 );
                 }
                 else
                 {
                     if((holder.checkBox.getPaintFlags() & Paint.STRIKE_THRU_TEXT_FLAG) > 0)
                         holder.checkBox.setPaintFlags( holder.checkBox.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG) );
                     myDB.updateStatus( item.getId(), 0 );
+                    item.setStatus( 0 );
                 }
             }
         } );
@@ -88,7 +91,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
         Bundle bundle = new Bundle();
         bundle.putString( "task", item.getTask() );
         bundle.putInt( "id", item.getId() );
-        AddNewTask task = new AddNewTask();
+        AddNewTask task = new AddNewTask(position);
         task.setArguments( bundle );
         task.show( mainActivity.getSupportFragmentManager(), task.getTag() );
     }

@@ -2,7 +2,9 @@ package com.skye.todo;
 
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.graphics.Color;
@@ -17,6 +19,7 @@ public class SplashScreeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
+        //darkmode();
         TypedValue typedValue = new TypedValue();
         Theme theme = this.getTheme();
         theme.resolveAttribute( R.attr.splashscreen_background_color, typedValue, true  );
@@ -35,5 +38,35 @@ public class SplashScreeActivity extends AppCompatActivity {
 
         View easySplashScreen = config.create();
         setContentView(easySplashScreen );
+    }
+
+    private void darkmode()
+    {
+        SharedPreferences sharedPreferences
+                = getSharedPreferences(
+                "sharedPrefs", MODE_PRIVATE);
+        final SharedPreferences.Editor editor
+                = sharedPreferences.edit();
+
+        boolean isDarkModeOn
+                = sharedPreferences
+                .getBoolean(
+                        "isDarkModeOn", false);
+
+        // When user reopens the app
+        // after applying dark/light mode
+
+        if (isDarkModeOn) {
+            AppCompatDelegate
+                    .setDefaultNightMode(
+                            AppCompatDelegate
+                                    .MODE_NIGHT_YES);
+        }
+        else {
+            AppCompatDelegate
+                    .setDefaultNightMode(
+                            AppCompatDelegate
+                                    .MODE_NIGHT_NO);
+        }
     }
 }
