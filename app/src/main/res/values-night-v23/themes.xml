@@ -3,7 +3,7 @@
 
     <style name="Splashscreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimaryDark">@color/full_black</item>
-        <item name="splashscreen_background_color">@color/full_black</item>
+        <item name="splashscreen_background_color">@color/grey_850</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>

@@ -20,8 +20,8 @@
     </style>>
 
     <style name="Splashscreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="splashscreen_background_color">@color/white</item>
+        <item name="colorPrimaryDark">@color/grey_300</item>
+        <item name="splashscreen_background_color">@color/grey_50</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>
