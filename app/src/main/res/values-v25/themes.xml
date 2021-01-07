@@ -19,9 +19,23 @@
         <item name="colorControlHighlight">@color/blue</item>
     </style>>
 
+    <style name="MyCustomActivityAnimation"
+        parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">
+            @anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">
+            @anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">
+            @anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">
+            @anim/slide_out_right</item>
+    </style>
+
     <style name="Splashscreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimaryDark">@color/grey_300</item>
         <item name="splashscreen_background_color">@color/grey_50</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
+
+
 </resources>

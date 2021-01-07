@@ -2,7 +2,6 @@ package com.skye.todo;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Html;
@@ -12,7 +11,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         {
             case R.id.aboutus_menu_item:
                 startActivity(new Intent(this, AboutUsActivity.class) );
+                overridePendingTransition(R.anim.slide_in_right,
+                        R.anim.slide_out_left);
                 return true;
                 /*
             case R.id.darkmode_menu_item:
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         }
         return super.onOptionsItemSelected( item );
     }
+
 
     @Override
     protected void onPause() {
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
 
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         int nightFlags = this.getResources().getConfiguration().uiMode &
                 Configuration.UI_MODE_NIGHT_MASK;

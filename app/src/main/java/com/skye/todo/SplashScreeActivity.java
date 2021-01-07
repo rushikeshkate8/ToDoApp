@@ -20,6 +20,7 @@ public class SplashScreeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         //darkmode();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         TypedValue typedValue = new TypedValue();
         Theme theme = this.getTheme();
         theme.resolveAttribute( R.attr.splashscreen_background_color, typedValue, true  );
