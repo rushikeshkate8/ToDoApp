@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ToDo">
         <activity android:name=".AboutUsActivity"
-            android:label="About Us"
+            android:label="@string/about_us"
             android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".SplashScreeActivity"

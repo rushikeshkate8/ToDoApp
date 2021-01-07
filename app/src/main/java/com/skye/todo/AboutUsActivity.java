@@ -31,7 +31,7 @@ public class AboutUsActivity extends AppCompatActivity {
                 Uri.parse("https://play.google.com/store/apps/dev?id=6098242075383052047"));
         Element devPlayStorePageElement = new Element();
         devPlayStorePageElement.setIconDrawable( R.drawable.ic_baseline_apps_24 )
-                .setTitle( "Our other Apps" )
+                .setTitle( getResources().getString( R.string.our_other_app ) )
                 .setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -44,7 +44,7 @@ public class AboutUsActivity extends AppCompatActivity {
         intentEmail.putExtra( Intent.EXTRA_EMAIL, new String[]{"rushikeshkate8@gmail.com"} );
         intentEmail.setData( Uri.parse( "mailto:" ) );
         emailElement.setIconDrawable( R.drawable.ic_baseline_email_24 )
-                .setTitle( "Contact us through Email" )
+                .setTitle( getResources().getString( R.string.contact_us_through_email ) )
                 .setIntent( intentEmail );
 
         String version = "";
@@ -59,7 +59,7 @@ public class AboutUsActivity extends AppCompatActivity {
         versionElement.setTitle( "v" + version );
 
         Element develperNameElement = new Element();
-        develperNameElement.setTitle( "Rushikesh Kate" )
+        develperNameElement.setTitle( getResources().getString( R.string.developer_name ) )
                            .setIconDrawable( R.drawable.ic_baseline_android_24 );
 
         int nightFlags = this.getResources().getConfiguration().uiMode &
@@ -73,10 +73,10 @@ public class AboutUsActivity extends AppCompatActivity {
                 //.setCustomFont(String) // or Typeface
                 .setDescription( "ToDo App" )
                 .setImage(R.drawable.ic_baseline_task_alt)
-                .addGroup( "Developer" )
+                .addGroup( getResources().getString( R.string.developer ) )
                 .addItem(develperNameElement)
                 .addItem( devPlayStorePageElement )
-                .addGroup("Connect with us")
+                .addGroup(getResources().getString( R.string.connect_with_us ))
                 .addItem( emailElement )
                 //.addEmail("rushikeshkate8@gmail.com", "Contact us through Email")
                 //.addWebsite("https://mehdisakout.com/")
@@ -86,7 +86,7 @@ public class AboutUsActivity extends AppCompatActivity {
                 //.addPlayStore("com.ideashower.readitlater.pro")
                 //.addGitHub("medyo")
                 .addInstagram("rushikeshkate1")
-                .addGroup( "App Version" )
+                .addGroup( getResources().getString( R.string.app_version ) )
                 .addItem(versionElement)
                 .create();
         setContentView( aboutPage);

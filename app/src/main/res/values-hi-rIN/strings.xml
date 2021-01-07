@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ToDo</string>
+    <string name="delete_task">कार्य हटाएँ</string>
+    <string name="enter_a_new_task">एक नया कार्य प्रविष्ट करें</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="save">सहेजें</string>
+    <string name="are_you_sure">क्या आपको यकीन है ?</string>
+    <string name="yes">हाँ</string>
+    <string name="no">नहीं</string>
+    <string name="about_us">हमारे बारे में</string>
+    <string name="our_other_app">हमारे अन्य ऐप्स</string>
+    <string name="contact_us_through_email">" ईमेल के माध्यम से हमसे संपर्क करें"</string>
+    <string name="developer">डेवलपर</string>
+    <string name="connect_with_us">हमसे जुडे</string>
+    <string name="app_version">अ‍ॅप वर्जन</string>
+    <string name="developer_name">ऋषिकेश काटे</string>
+</resources>

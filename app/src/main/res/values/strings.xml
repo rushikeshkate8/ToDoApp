@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">ToDo</string>
+    <string name="enter_a_new_task">Enter a New Task</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="are_you_sure">Are You Sure ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="about_us">About Us</string>
+    <string name="developer">Developer</string>
+    <string name="developer_name">Rushikesh Kate</string>
+    <string name="our_other_app">Our other Apps</string>
+    <string name="connect_with_us">Connect with Us</string>
+    <string name="contact_us_through_email">Contact us through Email</string>
+    <string name="app_version">App Version</string>
 </resources>
