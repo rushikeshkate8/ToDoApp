@@ -17,6 +17,13 @@ import gr.net.maroulis.library.EasySplashScreen;
 public class SplashScreeActivity extends AppCompatActivity {
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        overridePendingTransition(R.anim.slide_in_right,
+                R.anim.slide_out_left);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         //darkmode();

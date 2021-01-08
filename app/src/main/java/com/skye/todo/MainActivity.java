@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
 
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
         int nightFlags = this.getResources().getConfiguration().uiMode &
                 Configuration.UI_MODE_NIGHT_MASK;
