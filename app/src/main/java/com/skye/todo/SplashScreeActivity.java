@@ -38,12 +38,11 @@ public class SplashScreeActivity extends AppCompatActivity {
 
                 .withTargetActivity(MainActivity.class)
 
-                .withSplashTimeOut(1000)
+                .withSplashTimeOut(2000)
 
                 .withBackgroundColor( splashScreenBackgroundColor )
 
                 .withLogo( R.drawable.ic_baseline_task_alt);
-
         View easySplashScreen = config.create();
         setContentView(easySplashScreen );
     }
